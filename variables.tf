@@ -1,5 +1,5 @@
 variable "partitions" {
-  type        = tuple(object({
+  type        = list(object({
     database              = string
     table                 = string
     location              = string
