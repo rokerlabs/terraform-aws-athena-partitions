@@ -19,7 +19,7 @@ steps:
   #         image: rokerlabs/golangqa:1.16
   #         propagate-environment: true
 
-    - label: ":test_tube: Unit test"
+  - label: ":test_tube: Unit test"
     command: .buildkite/bin/test
     plugins: *go
 
