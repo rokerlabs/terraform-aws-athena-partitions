@@ -21,7 +21,10 @@ steps:
 
   - label: ":test_tube: Unit test"
     command: .buildkite/bin/test
-    plugins: *go
+    plugins: &go
+      - docker#v3.8.0:
+          image: golang:1.16
+          propagate-environment: true
 
   - label: ":go: Build"
     command: .buildkite/bin/build
