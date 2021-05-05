@@ -1,6 +1,6 @@
 locals {
-  package_url = "https://github.com/rokerlabs/terraform-aws-athena-partitions/releases/download/${var.release}/athena-partitions.zip"
-  artifact    = "athena-partitions-${var.release}.zip"
+  package_url = "https://github.com/rokerlabs/terraform-aws-athena-partitions/releases/download/${var.release}/${local.name}.zip"
+  artifact    = "${local.name}-${var.release}.zip"
 }
 
 resource "null_resource" "this" {
@@ -23,8 +23,8 @@ data "null_data_source" "this" {
 module "lambda" {
   source = "terraform-aws-modules/lambda/aws"
 
-  function_name = "athena-partitions"
-  handler       = "athena-partitions"
+  function_name = local.name
+  handler       = local.name
   runtime       = "go1.x"
 
   create_package         = false
@@ -45,6 +45,6 @@ module "lambda" {
   create_current_version_allowed_triggers = false
 
   tags = merge(var.tags, {
-    Name = "athena-partitions"
+    Name = local.name
   })
 }
