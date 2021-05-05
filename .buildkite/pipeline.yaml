@@ -12,12 +12,12 @@ steps:
       - cd src/ && yarn audit
     plugins: *node
 
-  - label: ":golangci-lint: Code quality"
-    command: .buildkite/bin/lint
-    plugins: &go
-      - docker#v3.8.0:
-          image: $ECR/golangqa:1.16
-          propagate-environment: true
+  # - label: ":golangci-lint: Code quality"
+  #   command: .buildkite/bin/lint
+  #   plugins: &go
+  #     - docker#v3.8.0:
+  #         image: rokerlabs/golangqa:1.16
+  #         propagate-environment: true
 
     - label: ":test_tube: Unit test"
     command: .buildkite/bin/test
@@ -29,19 +29,16 @@ steps:
     key: go-build
     plugins: *go
 
-  - label: ":git: Dry GitHub Release"
-    commands:
-      - buildkite-agent artifact download dist/* .
-      - "echo '+++ :git: semantic-release'"
-      - semantic-release --dry-run
-    depends_on: go-build
-    plugins: &semantic-release
-      - docker#v3.8.0:
-          image: $ECR/semantic-release:17.4.2
-          mount-ssh-agent: true
-          propagate-environment: true
-          environment:
-              - GITHUB_TOKEN
+  # - label: ":git: Dry GitHub Release"
+  #   command: .buildkite/bin/semantic-release --dry-run
+  #   depends_on: go-build
+  #   plugins: &semantic-release
+  #     - docker#v3.8.0:
+  #         image: rokerlabs/semantic-release:17.4.2
+  #         mount-ssh-agent: true
+  #         propagate-environment: true
+  #         environment:
+  #             - GITHUB_TOKEN
 
   - label: ':terraform: Validate'
     command: validate
@@ -50,18 +47,13 @@ steps:
           image: rokerlabs/terraform:0.15
           environment:
             - AWS_REGION
-            - TERRAFORM_AWS_ACCESS_KEY_ID
-            - TERRAFORM_AWS_SECRET_ACCESS_KEY
             - TERRAFORM_REFRESH=false
             - TF_VAR_service_name=$BUILDKITE_PIPELINE_SLUG
 
-  - block:
-    branches: master
+  # - block:
+  #   branches: master
 
-  - label: ":git: GitHub Release"
-    branches: master
-    commands:
-      - buildkite-agent artifact download dist/* .
-      - "echo '+++ :git: semantic-release'"
-      - semantic-release
-    plugins: *semantic-release
+  # - label: ":git: GitHub Release"
+  #   branches: master
+  #   command: .buildkite/bin/semantic-release
+  #   plugins: *semantic-release

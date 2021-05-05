@@ -29,3 +29,6 @@ terraform-fmt:
 terraform-validate:
 	terraform init
 	AWS_REGION=us-west-2 terraform validate
+
+test:
+	.buildkite/bin/test

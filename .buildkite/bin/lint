@@ -4,6 +4,10 @@ set -euo pipefail
 
 cd src/
 
+if [ "$BUILDKITE" = "true" ]; then
+  echo "+++ :golangci-lint: Lint"
+fi
+
 golangci-lint run -v ./... \
   --enable="gosec" \
   --enable="golint" \

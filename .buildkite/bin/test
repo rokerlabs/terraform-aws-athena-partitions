@@ -4,8 +4,13 @@ set -eo pipefail
 
 cd src/
 
-echo "+++ :go: Test"
+if [ "$BUILDKITE" = "true" ]; then
+    echo "+++ :go: Test"
+fi
+
 go test -coverprofile cover.out ./...
 
-echo "+++ :go: Function test coverage"
+if [ "$BUILDKITE" = "true" ]; then
+    echo "+++ :go: Function test coverage"
+fi
 go tool cover -func cover.out

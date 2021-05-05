@@ -4,7 +4,10 @@ set -euo pipefail
 
 cd src/
 
-echo "+++ :go: Build"
+if [ "$BUILDKITE" = "true" ]; then
+  echo "+++ :go: Build"
+fi
+
 GOOS=linux go build -o ../dist/athena-partitions cmd/main.go
 
 if ! which zip; then
