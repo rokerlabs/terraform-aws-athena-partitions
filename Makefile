@@ -1,3 +1,5 @@
+export BUILDKITE = false
+
 .PHONY: terraform-docs
 
 all: clean init lint security-check terraform-fmt terraform-validate terraform-docs build clean
@@ -12,11 +14,12 @@ init:
 	yarn install
 
 lint:
-	tflint .
+	docker run --rm -t -v $(shell pwd)/:/data -w /data wata727/tflint --var-file=testing.tfvars .
+	.buildkite/bin/lint
 	.buildkite/bin/commitlint
 
 security-check:
-	@tfsec .
+	docker run --rm -t -v $(shell pwd)/:/data -w /data tfsec/tfsec --tfvars-file=testing.tfvars .
 
 terraform-docs:
 	@sed '/generated-docs-below/q' README.md | tee README.md

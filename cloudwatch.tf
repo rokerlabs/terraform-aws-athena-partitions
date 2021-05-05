@@ -6,7 +6,7 @@ resource "aws_cloudwatch_event_rule" "this" {
 }
 
 resource "aws_cloudwatch_event_target" "this" {
-  # arn  = lambda_arn
+  arn   = module.lambda.lambda_function_arn
   input = tostring(jsonencode(var.partitions))
   rule  = aws_cloudwatch_event_rule.this.name
 }

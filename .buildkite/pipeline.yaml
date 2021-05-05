@@ -37,6 +37,18 @@ steps:
   #         environment:
   #             - GITHUB_TOKEN
 
+  - label: ':lint-roller: TFLint'
+    plugins:
+      - docker#v3.8.0:
+          image: wata727/tflint
+          command: ["--var-file=testing.tfvars", "."]
+
+  - label: ':lock: TFSEC'
+    plugins:
+      - docker#v3.8.0:
+          image: tfsec/tfsec
+          command: ["--tfvars-file=testing.tfvars", "."]
+
   - label: ':terraform: Validate'
     command: validate
     plugins:

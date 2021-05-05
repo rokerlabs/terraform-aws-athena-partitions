@@ -22,27 +22,7 @@ data "aws_iam_policy_document" "this" {
   }
 
   statement {
-    actions = [
-        "glue:CreateDatabase",
-        "glue:DeleteDatabase",
-        "glue:GetDatabase",
-        "glue:GetDatabases",
-        "glue:UpdateDatabase",
-        "glue:CreateTable",
-        "glue:DeleteTable",
-        "glue:BatchDeleteTable",
-        "glue:UpdateTable",
-        "glue:GetTable",
-        "glue:GetTables",
-        "glue:BatchCreatePartition",
-        "glue:CreatePartition",
-        "glue:DeletePartition",
-        "glue:BatchDeletePartition",
-        "glue:UpdatePartition",
-        "glue:GetPartition",
-        "glue:GetPartitions",
-        "glue:BatchGetPartition",
-    ]
+    actions   = ["glue:CreatePartition"]
     resources = ["*"]
   }
 }
