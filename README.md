@@ -38,22 +38,35 @@ module "athena_partition" {
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | ~> 3.0 |
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_lambda"></a> [lambda](#module\_lambda) | terraform-aws-modules/lambda/aws |  |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [aws_cloudwatch_event_rule.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_target.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target) | resource |
+| [aws_iam_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [null_resource.this](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [aws_iam_policy_document.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [null_data_source.this](https://registry.terraform.io/providers/hashicorp/null/latest/docs/data-sources/data_source) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_partitions"></a> [partitions](#input\_partitions) | Map list of Athena partitions to be managed | <pre>tuple(object({<br>    database = string<br>    table    = string<br>    location = object({<br>      bucket = string<br>      key    = string<br>    })<br>    query_result_bucket = string<br>  }))</pre> | <pre>[<br>  {}<br>]</pre> | no |
+| <a name="input_partitions"></a> [partitions](#input\_partitions) | Map list of Athena partitions to be managed | <pre>list(object({<br>    database              = string<br>    table                 = string<br>    location              = string<br>    query_result_location = string<br>  }))</pre> | <pre>[<br>  {}<br>]</pre> | no |
 | <a name="input_release"></a> [release](#input\_release) | Release/version of the Athena Partitions function code e.g. `v0.0.0`. | `string` | `"v0.0.0"` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | AWS resource tags | `map(string)` | `{}` | no |
 
 ## Outputs
 
