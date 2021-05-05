@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -euo pipefail
+
+cd src/
+
+echo "+++ :go: Build"
+GOOS=linux go build -o ../dist/athena-partitions cmd/main.go
+
+if ! which zip; then
+  apt-get install -qq zip
+fi
+
+cd ../
+zip -jm dist/athena-partitions.zip dist/athena-partitions

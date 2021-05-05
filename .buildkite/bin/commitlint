@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+if [ "$BUILDKITE" = "true" ]; then
+  echo '~~~ :yarn: Install'
+  yarn install --no-progress
+else
+  [ ! -d "./node_modules/" ] && yarn install
+fi
+
+if [ "$BUILDKITE" = "true" ]; then
+  echo '+++ :git: Commitlint'
+fi
+
+yarn commitlint

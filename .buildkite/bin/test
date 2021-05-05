@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eo pipefail
+
+cd src/
+
+echo "+++ :go: Test"
+go test -coverprofile cover.out ./...
+
+echo "+++ :go: Function test coverage"
+go tool cover -func cover.out

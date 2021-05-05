@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -euo pipefail
+
+cd src/
+
+golangci-lint run -v ./... \
+  --enable="gosec" \
+  --enable="golint" \
+  --enable="gofmt" \
+  --enable="goimports"

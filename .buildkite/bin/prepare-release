@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -eu
+
+echo "Setting the new default version for proxy function code."
+sed -i -E "s/= \"v[0-9]+\.[0-9]+\.[0-9]+\"/= \"v$1\"/" release.tf
+sed -i -E "s/\`\"v[0-9]+\.[0-9]+\.[0-9]+\"\`/\`\"v$1\"\`/" README.md
+
+grep "\"v$1\"" release.tf
+grep "\`\"v$1\"\`" README.md
+echo "New release default set to '$1'."

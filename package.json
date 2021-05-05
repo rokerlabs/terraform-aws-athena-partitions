@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "scripts": {
+    "commitlint": "commitlint --from HEAD~1 --to HEAD --verbose",
+    "prepare": "husky install"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "12.1.1",
+    "@commitlint/config-conventional": "12.1.1",
+    "commitizen": "4.2.3",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "6.0.0"
+  }
+}

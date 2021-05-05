@@ -1,0 +1,67 @@
+steps:
+  - label: ":git: Commitlint"
+    command: .buildkite/bin/commitlint
+    plugins: &node
+      - docker#v3.8.0:
+          image: node:14
+          propagate-environment: true
+
+  - label: ":yarn: CVE check"
+    commands:
+      - "echo '+++ :yarn: Yarn audit'"
+      - cd src/ && yarn audit
+    plugins: *node
+
+  - label: ":golangci-lint: Code quality"
+    command: .buildkite/bin/lint
+    plugins: &go
+      - docker#v3.8.0:
+          image: $ECR/golangqa:1.16
+          propagate-environment: true
+
+    - label: ":test_tube: Unit test"
+    command: .buildkite/bin/test
+    plugins: *go
+
+  - label: ":go: Build"
+    command: .buildkite/bin/build
+    artifact_paths: dist/*.zip
+    key: go-build
+    plugins: *go
+
+  - label: ":git: Dry GitHub Release"
+    commands:
+      - buildkite-agent artifact download dist/* .
+      - "echo '+++ :git: semantic-release'"
+      - semantic-release --dry-run
+    depends_on: go-build
+    plugins: &semantic-release
+      - docker#v3.8.0:
+          image: $ECR/semantic-release:17.4.2
+          mount-ssh-agent: true
+          propagate-environment: true
+          environment:
+              - GITHUB_TOKEN
+
+  - label: ':terraform: Validate'
+    command: validate
+    plugins:
+      - docker#v3.8.0:
+          image: rokerlabs/terraform:0.15
+          environment:
+            - AWS_REGION
+            - TERRAFORM_AWS_ACCESS_KEY_ID
+            - TERRAFORM_AWS_SECRET_ACCESS_KEY
+            - TERRAFORM_REFRESH=false
+            - TF_VAR_service_name=$BUILDKITE_PIPELINE_SLUG
+
+  - block:
+    branches: master
+
+  - label: ":git: GitHub Release"
+    branches: master
+    commands:
+      - buildkite-agent artifact download dist/* .
+      - "echo '+++ :git: semantic-release'"
+      - semantic-release
+    plugins: *semantic-release
