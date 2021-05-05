@@ -1,16 +1,10 @@
 steps:
   - label: ":git: Commitlint"
     command: .buildkite/bin/commitlint
-    plugins: &node
+    plugins:
       - docker#v3.8.0:
           image: node:14
           propagate-environment: true
-
-  - label: ":yarn: CVE check"
-    commands:
-      - "echo '+++ :yarn: Yarn audit'"
-      - cd src/ && yarn audit
-    plugins: *node
 
   # - label: ":golangci-lint: Code quality"
   #   command: .buildkite/bin/lint

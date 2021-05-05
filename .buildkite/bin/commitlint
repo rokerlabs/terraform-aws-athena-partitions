@@ -5,12 +5,9 @@ set -e
 if [ "$BUILDKITE" = "true" ]; then
   echo "--- :yarn: Install"
   yarn install --no-progress
+  echo "+++ :git: Commitlint"
 else
   [ ! -d "./node_modules/" ] && yarn install
-fi
-
-if [ "$BUILDKITE" = "true" ]; then
-  echo "+++ :git: Commitlint"
 fi
 
 yarn commitlint
