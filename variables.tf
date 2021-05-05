@@ -5,7 +5,6 @@ variable "partitions" {
     location              = string
     query_result_location = string
   }))
-  default     = [{}]
   description = "Map list of Athena partitions to be managed"
 }
 
