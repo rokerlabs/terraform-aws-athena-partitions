@@ -5,14 +5,14 @@ set -euo pipefail
 cd src/
 
 if [ "$BUILDKITE" = "true" ]; then
+  if ! which zip; then
+    apt-get update -qq
+    apt-get install -qq zip
+  fi
+
   echo "+++ :go: Build"
 fi
 
 GOOS=linux go build -o ../dist/athena-partitions cmd/main.go
-
-if ! which zip; then
-  apt-get install -qq zip
-fi
-
 cd ../
 zip -jm dist/athena-partitions.zip dist/athena-partitions
