@@ -1,22 +1,10 @@
-locals {
-  package_url = "https://github.com/rokerlabs/terraform-aws-athena-partitions/releases/download/${var.release}/${local.name}.zip"
-  artifact    = "${local.name}-${var.release}.zip"
-}
-
 resource "null_resource" "this" {
   triggers = {
-    downloaded = local.artifact
+    artifact = local.package_file
   }
 
   provisioner "local-exec" {
-    command = "curl -L -o ${local.artifact} ${local.package_url}"
-  }
-}
-
-data "null_data_source" "this" {
-  inputs = {
-    id       = null_resource.this.id
-    filename = local.artifact
+    command = "curl -L -o ${local.package_file} ${local.package_url}"
   }
 }
 
@@ -28,7 +16,7 @@ module "lambda" {
   runtime       = "go1.x"
 
   create_package         = false
-  local_existing_package = data.null_data_source.this.outputs["filename"]
+  local_existing_package = local.package_file
 
   attach_policy = true
   policy        = aws_iam_policy.this.arn
@@ -47,4 +35,6 @@ module "lambda" {
   tags = merge(var.tags, {
     Name = local.name
   })
+
+  depends_on = [null_resource.this]
 }
