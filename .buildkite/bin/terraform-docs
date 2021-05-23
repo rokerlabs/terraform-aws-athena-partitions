@@ -7,7 +7,7 @@ echo "$manualDocs" > README.md
 
 if ! which terraform-docs >/dev/null; then
   version=$(curl -s https://api.github.com/repos/terraform-docs/terraform-docs/releases/latest | jq -r '.tag_name')
-  curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/${version}/terraform-docs-${version}-$(uname)-amd64.tar.gz
+  curl -sSLo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/${version}/terraform-docs-${version}-linux-amd64.tar.gz
   tar -xzvf terraform-docs.tar.gz
   chmod +x terraform-docs
   ./terraform-docs --version
