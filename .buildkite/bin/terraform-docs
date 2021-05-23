@@ -16,5 +16,5 @@ terraform-docs md . >> README.md
 
 echo "\n## Copyright\n\nCopyright (c) 2021 Roker Labs. See [LICENSE](./LICENSE) for details." >> README.md
 
-echo "+++ :book: README updates"
+echo "+++ :git: README changes"
 git diff README.md
