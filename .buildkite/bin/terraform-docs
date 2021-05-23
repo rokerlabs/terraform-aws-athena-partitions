@@ -11,7 +11,7 @@ echo "$manualDocs" > README.md
 
 terraform-docs md . >> README.md
 
-echo "\n## Copyright\n\nCopyright (c) 2021 Roker Labs. See [LICENSE](./LICENSE) for details." >> README.md
+printf "\n## Copyright\n\nCopyright (c) 2021 Roker Labs. See [LICENSE](./LICENSE) for details." >> README.md
 
 echo "+++ :git: README changes"
 git diff README.md
