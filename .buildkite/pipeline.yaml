@@ -6,7 +6,7 @@ steps:
           image: node:14
           propagate-environment: true
 
-  - label: ":book: Docs generation"
+  - label: ":book: Terraform docs"
     command: .buildkite/bin/generate-docs
 
   - label: ":golangci-lint: Code quality"

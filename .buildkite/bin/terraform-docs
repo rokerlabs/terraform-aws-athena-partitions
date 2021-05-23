@@ -10,7 +10,6 @@ if ! which terraform-docs >/dev/null; then
   curl -Lo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/${version}/terraform-docs-${version}-$(uname)-amd64.tar.gz
   tar -xzf terraform-docs.tar.gz
   chmod +x terraform-docs
-  mv terraform-docs /usr/local/bin/terraform-docs
 fi
 
 terraform-docs md . >> README.md

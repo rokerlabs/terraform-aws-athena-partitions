@@ -10,4 +10,4 @@ grep "\"v$1\"" release.tf
 grep "\`\"v$1\"\`" README.md
 echo "New release default set to '$1'."
 
-.buildkite/bin/generate-docs
+.buildkite/bin/terraform-docs

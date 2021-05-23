@@ -15,7 +15,7 @@ clean:
 	rm -rf .terraform/ dist/ node_modules/ yarn.lock cover.out .terraform.lock.hcl
 
 docs:
-	.buildkite/bin/generate-docs
+	.buildkite/bin/terraform-docs
 
 install:
 	yarn install
