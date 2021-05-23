@@ -72,10 +72,10 @@ steps:
             - TERRAFORM_REFRESH=false
             - TF_VAR_service_name=$BUILDKITE_PIPELINE_SLUG
 
-  # - block:
-  #   branches: master
+  - block:
+    branches: master
 
-  # - label: ":git: GitHub Release"
-  #   branches: master
-  #   command: .buildkite/bin/semantic-release
-  #   plugins: *semantic-release
+  - label: ":git: GitHub Release"
+    branches: master
+    command: .buildkite/bin/semantic-release
+    plugins: *semantic-release
