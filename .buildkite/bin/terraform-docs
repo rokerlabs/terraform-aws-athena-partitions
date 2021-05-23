@@ -7,7 +7,7 @@ if ! which git >/dev/null; then
 fi
 
 manualDocs=$(sed '/generated-docs-below/q' README.md)
-echo "$manualDocs" > README.md
+echo "${manualDocs}" > README.md
 
 terraform-docs md . >> README.md
 
@@ -20,5 +20,6 @@ if [ "$BUILDKITE_BRANCH" == "master" ]; then
   if git status | grep README.md >/dev/null; then
     git add README.md
     git commit -m "docs(README): updated terraform docs [skip ci]"
+    git push -u origin master
   fi
 fi
