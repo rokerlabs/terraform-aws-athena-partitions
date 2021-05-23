@@ -6,12 +6,19 @@ steps:
           image: node:14
           propagate-environment: true
 
-  # - label: ":golangci-lint: Code quality"
-  #   command: .buildkite/bin/lint
-  #   plugins: &go
-  #     - docker#v3.8.0:
-  #         image: rokerlabs/golangqa:1.16
-  #         propagate-environment: true
+  - label: ":book: Docs generation"
+    command: .buildkite/bin/generate-docs
+    plugins:
+      - docker#v3.8.0:
+          image: quay.io/terraform-docs/terraform-docs:0.13.0
+          propagate-environment: true
+
+  - label: ":golangci-lint: Code quality"
+    command: .buildkite/bin/lint
+    plugins:
+      - docker#v3.8.0:
+          image: rokerlabs/golangci-lint:1.16
+          propagate-environment: true
 
   - label: ":bomb: Unit test"
     command: .buildkite/bin/test
@@ -26,16 +33,16 @@ steps:
     key: go-build
     plugins: *go
 
-  # - label: ":git: Dry GitHub Release"
-  #   command: .buildkite/bin/semantic-release --dry-run
-  #   depends_on: go-build
-  #   plugins: &semantic-release
-  #     - docker#v3.8.0:
-  #         image: rokerlabs/semantic-release:17.4.2
-  #         mount-ssh-agent: true
-  #         propagate-environment: true
-  #         environment:
-  #             - GITHUB_TOKEN
+  - label: ":git: Dry GitHub Release"
+    command: .buildkite/bin/semantic-release --dry-run
+    depends_on: go-build
+    plugins: &semantic-release
+      - docker#v3.8.0:
+          image: rokerlabs/semantic-release:17.4.3
+          mount-ssh-agent: true
+          propagate-environment: true
+          environment:
+            - GITHUB_TOKEN
 
   - label: ':mag: TFLint'
     plugins:
