@@ -12,7 +12,13 @@ if ! which terraform-docs >/dev/null; then
   chmod +x terraform-docs
 fi
 
-terraform-docs md . >> README.md
+path=""
+
+if [ "$BUILDKITE" = "true" ]; then
+  path="./"
+fi
+
+${path}terraform-docs md . >> README.md
 
 echo "\n## Copyright\n\nCopyright (c) 2021 Roker Labs. See [LICENSE](./LICENSE) for details." >> README.md
 
