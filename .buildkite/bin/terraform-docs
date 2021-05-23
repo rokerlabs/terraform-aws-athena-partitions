@@ -5,21 +5,7 @@ set -euo pipefail
 manualDocs=$(sed '/generated-docs-below/q' README.md)
 echo "$manualDocs" > README.md
 
-if ! which terraform-docs >/dev/null; then
-  version=$(curl -s https://api.github.com/repos/terraform-docs/terraform-docs/releases/latest | jq -r '.tag_name')
-  curl -sSLo ./terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/${version}/terraform-docs-${version}-linux-amd64.tar.gz
-  tar -xzvf terraform-docs.tar.gz
-  chmod +x terraform-docs
-  ./terraform-docs --version
-fi
-
-path=""
-
-if [ "$BUILDKITE" = "true" ]; then
-  path="./"
-fi
-
-${path}terraform-docs md . >> README.md
+terraform-docs md . >> README.md
 
 echo "\n## Copyright\n\nCopyright (c) 2021 Roker Labs. See [LICENSE](./LICENSE) for details." >> README.md
 

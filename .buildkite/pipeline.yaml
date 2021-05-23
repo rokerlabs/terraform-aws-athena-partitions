@@ -7,7 +7,11 @@ steps:
           propagate-environment: true
 
   - label: ":books: Terraform docs"
-    command: .buildkite/bin/terraform-docs
+    plugins:
+      - docker#v3.8.0:
+          image: quay.io/terraform-docs/terraform-docs:0.13.0
+          entrypoint: /workdir/.buildkite/bin/terraform-docs
+          propagate-environment: true
 
   - label: ":golangci-lint: Code quality"
     command: .buildkite/bin/lint
