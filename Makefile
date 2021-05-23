@@ -1,8 +1,12 @@
+# Default to not printing commands Add VERBOSE=on to the command line to see commands
+$(VERBOSE).SILENT:
+.PHONY: $(VERBOSE).SILENT docs
+
 export BUILDKITE = false
 
-.PHONY: terraform-docs
+.PHONY:
 
-all: clean init lint security-check terraform-fmt terraform-validate terraform-docs build clean
+all: clean install lint security-check terraform-fmt terraform-validate build clean
 
 build:
 	docker run --rm -t -e BUILDKITE -v $(shell pwd)/:/workdir -w /workdir golang:1.16 .buildkite/bin/build
@@ -10,7 +14,10 @@ build:
 clean:
 	rm -rf .terraform/ dist/ node_modules/ yarn.lock cover.out .terraform.lock.hcl
 
-init:
+docs:
+	.buildkite/bin/terraform-docs
+
+install:
 	yarn install
 
 lint:
@@ -21,11 +28,6 @@ lint:
 security-check:
 	docker run --rm -t -v $(shell pwd)/:/workdir -w /workdir tfsec/tfsec --tfvars-file=testing.tfvars .
 	docker run --rm -t -v $(shell pwd):/workdir bridgecrew/checkov -d /workdir
-
-terraform-docs:
-	@sed '/generated-docs-below/q' README.md | tee README.md
-	@terraform-docs md . >> README.md
-	@echo "\n## Copyright\n\nCopyright (c) 2021 Roker Labs. See [LICENSE](./LICENSE) for details." >> README.md
 
 terraform-fmt:
 	terraform fmt

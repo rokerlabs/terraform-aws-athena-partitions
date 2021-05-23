@@ -3,7 +3,7 @@
 set -eo pipefail
 
 if [ "$BUILDKITE" = "true" ]; then
-    buildkite-agent artifact download dist/* .
-    echo "+++ :git: semantic-release"
-    semantic-release $@
+  buildkite-agent artifact download dist/* .
+  echo "+++ :git: semantic-release"
+  semantic-release $@
 fi
