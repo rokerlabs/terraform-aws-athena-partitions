@@ -13,4 +13,5 @@ go test -coverprofile cover.out ./...
 if [ "$BUILDKITE" = "true" ]; then
     echo "+++ :go: Function test coverage"
 fi
+
 go tool cover -func cover.out

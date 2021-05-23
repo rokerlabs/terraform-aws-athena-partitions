@@ -8,10 +8,6 @@ steps:
 
   - label: ":book: Docs generation"
     command: .buildkite/bin/generate-docs
-    plugins:
-      - docker#v3.8.0:
-          image: quay.io/terraform-docs/terraform-docs:0.13.0
-          propagate-environment: true
 
   - label: ":golangci-lint: Code quality"
     command: .buildkite/bin/lint
