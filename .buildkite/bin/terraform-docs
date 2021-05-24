@@ -6,6 +6,10 @@ if ! which git >/dev/null; then
   apk add --update --no-cache git openssh
 fi
 
+if [ "$BUILDKITE_BRANCH" == "master" ]; then
+  git checkout master
+fi
+
 manualDocs=$(sed '/generated-docs-below/q' README.md)
 echo "${manualDocs}" > README.md
 
