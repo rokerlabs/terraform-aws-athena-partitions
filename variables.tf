@@ -1,3 +1,8 @@
+variable "name" {
+  type        = string
+  description = "Identifier for the group of logs to be partitioned"
+}
+
 variable "partitions" {
   type = list(object({
     database = string
