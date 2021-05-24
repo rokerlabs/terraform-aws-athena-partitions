@@ -19,6 +19,7 @@ git diff README.md
 if [ "$BUILDKITE_BRANCH" == "master" ]; then
   if git status | grep README.md >/dev/null; then
     git add README.md
+    git config user.email "rokertech@gmail.com"
     git config user.name "rokerbot"
     git commit -m "docs(README): updated terraform docs [skip ci]"
     git push -u origin master
