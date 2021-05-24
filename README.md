@@ -170,6 +170,7 @@ module "athena_partition" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_name"></a> [name](#input\_name) | Identifier for the group of logs to be partitioned | `string` | n/a | yes |
 | <a name="input_partitions"></a> [partitions](#input\_partitions) | Map list of Athena partitions to be managed | <pre>list(object({<br>    database = string<br>    table    = string<br>    location = string<br>  }))</pre> | n/a | yes |
 | <a name="input_release"></a> [release](#input\_release) | Release/version of the Athena Partitions function code e.g. `v0.0.0`. | `string` | `"v1.0.0"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | AWS resource tags | `map(string)` | `{}` | no |
