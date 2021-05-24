@@ -3,7 +3,7 @@
 set -eo pipefail
 
 if ! which git >/dev/null; then
-  apk add --update --no-cache git
+  apk add --update --no-cache git openssh
 fi
 
 manualDocs=$(sed '/generated-docs-below/q' README.md)
