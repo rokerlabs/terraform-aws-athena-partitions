@@ -114,7 +114,7 @@ General use case example:
 ```hcl
 module "athena_partition" {
   source  = "rokerlabs/athena-partition/aws"
-  version = "~> 1.0.0"
+  version = "~> 0.0.0"
 
   name = "loadbalancing"
   partitions = [{
