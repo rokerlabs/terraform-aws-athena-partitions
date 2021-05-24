@@ -6,6 +6,6 @@ variable "release" {
   validation {
     # regex(...) fails if it cannot find a match
     condition     = can(regex("^v\\d+\\.\\d+\\.\\d+$", var.release))
-    error_message = "The release value must match the semantic versioning format: `v0.0.0`"
+    error_message = "The release value must match the semantic versioning format: `v0.0.0`."
   }
 }
