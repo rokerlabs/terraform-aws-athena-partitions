@@ -15,7 +15,9 @@ clean:
 	rm -rf .terraform/ dist/ node_modules/ yarn.lock cover.out .terraform.lock.hcl
 
 docs:
-	.buildkite/bin/terraform-docs
+	sed -i '' '/generated-docs-below/q' README.md
+	terraform-docs md . >> README.md
+	printf "\n## Copyright\n\nCopyright (c) 2021 Roker Labs. See [LICENSE](./LICENSE) for details." >> README.md
 
 install:
 	yarn install
