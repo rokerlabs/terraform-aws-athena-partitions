@@ -66,8 +66,6 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
 
 * All features or bug fixes **must be tested** by one or more tests.
 
-### Specific topics
-
 ## <a name="commits"></a> Git Commit Guidelines
 
 We follow v1.0.0 of the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/#summary)
