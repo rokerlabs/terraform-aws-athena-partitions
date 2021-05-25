@@ -107,7 +107,6 @@ LOCATION 's3://LOG_BUCKET/LOGS_PREFIX/AWSLogs/AWS_ACCOUNT_ID/elasticloadbalancin
 ```
 
 ## Usage
----
 
 General use case example:
 
@@ -129,7 +128,6 @@ module "athena_partitions" {
 }
 ```
 
----
 <!-- generated-docs-below -->
 ## Requirements
 
