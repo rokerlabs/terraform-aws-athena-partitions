@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Go lint and test
+cd src/
+golangci-lint run ./... --enable="gosec" --enable="golint" --enable="gofmt" --enable="goimports"
+go test ./...
+cd ../
+
+# Terraform lint and doc generation
+docker run --rm -t -v $(pwd)/:/workdir -w /workdir wata727/tflint --var-file=testing.tfvars .
+make docs
