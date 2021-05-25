@@ -112,8 +112,8 @@ LOCATION 's3://LOG_BUCKET/LOGS_PREFIX/AWSLogs/AWS_ACCOUNT_ID/elasticloadbalancin
 General use case example:
 
 ```hcl
-module "athena_partition" {
-  source  = "rokerlabs/athena-partition/aws"
+module "athena_partitions" {
+  source  = "rokerlabs/athena-partitions/aws"
   version = "~> 1.0.0"
 
   name = "loadbalancing"
