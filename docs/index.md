@@ -51,7 +51,8 @@ make test
 
 ### <a name="e2e-tests"></a> Running the End-to-end Test Suite
 
-Athena Partitions's end to end tests are run with Cypress. Simply run:
+Athena Partitions unfortunately doesn't have a true end-to-end test suite, since we haven't developed a
+test environment to support it. Instead we can run all the build and test commands we have available. Simply run:
 
 ```shell
 make all

@@ -4,9 +4,7 @@ $(VERBOSE).SILENT:
 
 export BUILDKITE = false
 
-.PHONY:
-
-all: clean install lint security-check terraform-fmt terraform-validate build clean
+all: clean install lint test security-check terraform-fmt terraform-validate build clean
 
 build:
 	docker run --rm -t -e BUILDKITE -v $(shell pwd)/:/workdir -w /workdir golang:1.16 .buildkite/bin/build
