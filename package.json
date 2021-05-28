@@ -1,5 +1,4 @@
 {
-  "private": true,
   "scripts": {
     "commitlint": "commitlint --from HEAD~1 --to HEAD --verbose",
     "prepare": "husky install"
