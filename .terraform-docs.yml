@@ -1,0 +1,11 @@
+version: ">= 0.13.0, < 1.0.0"
+
+formatter: markdown
+
+output:
+  file: "README.md"
+  mode: inject
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
