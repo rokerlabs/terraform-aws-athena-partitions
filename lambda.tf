@@ -9,7 +9,8 @@ resource "null_resource" "this" {
 }
 
 module "lambda" {
-  source = "terraform-aws-modules/lambda/aws"
+  source  = "terraform-aws-modules/lambda/aws"
+  version = "2.5.0"
 
   function_name = local.name
   handler       = local.name

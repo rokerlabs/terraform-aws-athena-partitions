@@ -128,7 +128,7 @@ module "athena_partitions" {
 }
 ```
 
-<!-- generated-docs-below -->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -141,14 +141,14 @@ module "athena_partitions" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.0 |
-| <a name="provider_null"></a> [null](#provider\_null) | ~> 3.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.42.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | 3.1.0 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_lambda"></a> [lambda](#module\_lambda) | terraform-aws-modules/lambda/aws |  |
+| <a name="module_lambda"></a> [lambda](#module\_lambda) | terraform-aws-modules/lambda/aws | 2.5.0 |
 
 ## Resources
 
@@ -176,6 +176,7 @@ module "athena_partitions" {
 ## Outputs
 
 No outputs.
+<!-- END_TF_DOCS -->
 
 ## Copyright
 

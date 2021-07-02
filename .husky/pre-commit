@@ -8,5 +8,5 @@ go test ./...
 cd ../
 
 # Terraform lint and doc generation
-docker run --rm -t -v $(pwd)/:/workdir -w /workdir wata727/tflint --var-file=testing.tfvars .
+make tflint
 make docs

@@ -13,15 +13,12 @@ clean:
 	rm -rf .terraform/ dist/ node_modules/ yarn.lock cover.out .terraform.lock.hcl
 
 docs:
-	sed -i '' '/generated-docs-below/q' README.md
-	terraform-docs md . >> README.md
-	printf "\n## Copyright\n\nCopyright (c) 2021 Roker Labs. See [LICENSE](./LICENSE) for details." >> README.md
+	docker run --rm -t -v $(shell pwd)/:/workdir -w /workdir quay.io/terraform-docs/terraform-docs .
 
 install:
 	yarn install
 
-lint:
-	docker run --rm -t -v $(shell pwd)/:/workdir -w /workdir wata727/tflint --var-file=testing.tfvars .
+lint: tflint
 	.buildkite/bin/lint
 	.buildkite/bin/commitlint
 
@@ -38,3 +35,6 @@ terraform-validate:
 
 test:
 	.buildkite/bin/test
+
+tflint:
+	docker run --rm -t -v $(shell pwd)/:/workdir -w /workdir wata727/tflint --var-file=testing.tfvars .
