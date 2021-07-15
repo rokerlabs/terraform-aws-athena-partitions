@@ -1,4 +1,6 @@
 resource "aws_s3_bucket" "this" {
+  count = var.query_result == null ? 1 : 0
+
   bucket = "${local.name}-results-${data.aws_caller_identity.current.account_id}-${data.aws_region.current.name}"
   acl    = "private"
 
@@ -22,7 +24,9 @@ resource "aws_s3_bucket" "this" {
 }
 
 resource "aws_s3_bucket_public_access_block" "this" {
-  bucket = aws_s3_bucket.this.id
+  count = var.query_result == null ? 1 : 0
+
+  bucket = aws_s3_bucket.this[0].id
 
   block_public_acls       = true
   block_public_policy     = true

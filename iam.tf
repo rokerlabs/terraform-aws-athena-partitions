@@ -23,12 +23,12 @@ data "aws_iam_policy_document" "this" {
 
   statement {
     actions   = ["s3:PutObject"]
-    resources = ["${aws_s3_bucket.this.arn}/*"]
+    resources = ["${local.query_result_location_arn}/*"]
   }
 
   statement {
     actions   = ["s3:GetBucketLocation"]
-    resources = [aws_s3_bucket.this.arn]
+    resources = [local.query_result_location_arn]
   }
 
   statement {

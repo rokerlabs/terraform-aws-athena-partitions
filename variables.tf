@@ -4,12 +4,21 @@ variable "name" {
 }
 
 variable "partitions" {
-  type = list(object({
+  type = map(object({
     database = string
     table    = string
     location = string
   }))
-  description = "Map list of Athena partitions to be managed"
+  description = "Map of Athena partitions to be managed"
+}
+
+variable "query_result" {
+  type = object({
+    bucket_arn = string
+    location   = string
+  })
+  default     = null
+  description = "Specify the S3 bucket query result location"
 }
 
 variable "tags" {

@@ -138,7 +138,7 @@ module "athena_partitions" {
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.47.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.49.0 |
 | <a name="provider_null"></a> [null](#provider\_null) | 3.1.0 |
 
 ## Modules
@@ -166,7 +166,8 @@ module "athena_partitions" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_name"></a> [name](#input\_name) | Identifier for the group of logs to be partitioned | `string` | n/a | yes |
-| <a name="input_partitions"></a> [partitions](#input\_partitions) | Map list of Athena partitions to be managed | <pre>list(object({<br>    database = string<br>    table    = string<br>    location = string<br>  }))</pre> | n/a | yes |
+| <a name="input_partitions"></a> [partitions](#input\_partitions) | Map of Athena partitions to be managed | <pre>map(object({<br>    database = string<br>    table    = string<br>    location = string<br>  }))</pre> | n/a | yes |
+| <a name="input_query_result"></a> [query\_result](#input\_query\_result) | Specify the S3 bucket query result location | <pre>object({<br>    bucket_arn = string<br>    location   = string<br>  })</pre> | `null` | no |
 | <a name="input_release"></a> [release](#input\_release) | Release/version of the Athena Partitions function code e.g. `v0.0.0`. | `string` | `"v1.0.0"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | AWS resource tags | `map(string)` | `{}` | no |
 
