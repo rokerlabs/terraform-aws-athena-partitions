@@ -4,7 +4,7 @@ resource "null_resource" "this" {
   }
 
   provisioner "local-exec" {
-    command = "curl -sSL -o ${local.package_file} ${local.package_url}"
+    command = "curl -L -o ${local.package_file} https://github.com/rokerlabs/terraform-aws-athena-partitions/releases/download/${var.release}/athena-partitions.zip"
   }
 }
 

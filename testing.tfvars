@@ -6,10 +6,7 @@ partitions = {
   }
 }
 
-query_result = {
-  bucket_arn = "arn:aws:s3:::aws-athena-query-results-012345678900-us-east-1"
-  location   = "s3://aws-athena-query-results-012345678900-us-east-1/"
-}
+query_result_location = "s3://aws-athena-query-results-012345678900-us-east-1/athena-partitions/"
 
 tags = {
   Service = "athena-partitions"

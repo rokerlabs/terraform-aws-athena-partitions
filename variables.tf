@@ -12,11 +12,8 @@ variable "partitions" {
   description = "Map of Athena ALB/ELB log partitions to be managed."
 }
 
-variable "query_result" {
-  type = object({
-    bucket_arn = string
-    location   = string
-  })
+variable "query_result_location" {
+  type        = string
   default     = null
   description = "Specify an existing (S3 bucket) query result location. If not set, the module will create an S3 bucket for the functions query results."
 }
