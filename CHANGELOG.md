@@ -3,9 +3,7 @@
 
 ### Bug Fixes
 
-* **artifact download:** ensure the athena-partitions artifact is downloaded on lambda changes ([0d7b00f](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/0d7b00f32a5cdce5173dee7791fe989a097114f2))
 * **artifact download:** only download the artifact on version change to reduce diff noise ([51ee75c](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/51ee75c37650d7a4b75e3dcebf93ce3dd5845816))
-* **artifact download:** only show errors for curl execution output ([309b575](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/309b5752b90b656eb40fc60ccaeac57013806585))
 * **iam:** set the correct iam permissions for query execution and result output ([7a07f42](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/7a07f425c554fcb1e410b52a5366121597626d4f))
 * **lambda:** use the correct handler ([03aa645](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/03aa645dfef3fdac5dea100ba99dd761044cbfc0))
 
