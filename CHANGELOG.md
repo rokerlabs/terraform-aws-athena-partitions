@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.1...v1.0.2) (2021-07-15)
+
+
+### Bug Fixes
+
+* **artifact download:** only download the artifact on version change to reduce diff noise ([51ee75c](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/51ee75c37650d7a4b75e3dcebf93ce3dd5845816))
+* **lambda:** use the correct handler ([03aa645](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/03aa645dfef3fdac5dea100ba99dd761044cbfc0))
+
 ## [1.0.1](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.0...v1.0.1) (2021-07-15)
 
 
