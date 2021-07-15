@@ -117,13 +117,10 @@ module "athena_partitions" {
 
   name = "loadbalancing"
   partitions = [{
-    database = "production"
-    table    = "alb_logs"
-    location = {
-      bucket = "logs-123456789000-us-west-2"
-      key    = "AWSLogs/123456789000/elasticloadbalancing/us-west-2/"
-    }
-    query_result_bucket = "aws-athena-query-results-123456789000-us-west-2"
+    database            = "production"
+    table               = "alb_logs"
+    location            = "s3://logs-123456789000-us-west-2/AWSLogs/123456789000/elasticloadbalancing/us-west-2/"
+    query_result_bucket = "s3://aws-athena-query-results-123456789000-us-west-2/"
   }]
 }
 ```
