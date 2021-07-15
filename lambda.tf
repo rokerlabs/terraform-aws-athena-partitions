@@ -13,7 +13,7 @@ module "lambda" {
   version = "2.7.0"
 
   function_name = local.name
-  handler       = local.name
+  handler       = "athena-partitions"
   runtime       = "go1.x"
 
   create_package         = false
