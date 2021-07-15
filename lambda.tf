@@ -4,7 +4,7 @@ resource "null_resource" "this" {
   }
 
   provisioner "local-exec" {
-    command = "curl -L -o ${local.package_file} ${local.package_url}"
+    command = "curl -sSL -o ${local.package_file} ${local.package_url}"
   }
 }
 
