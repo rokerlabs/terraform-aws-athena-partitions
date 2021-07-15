@@ -10,13 +10,13 @@ resource "aws_iam_policy" "this" {
 data "aws_iam_policy_document" "this" {
   statement {
     actions   = ["s3:PutObject"]
-    resources = ["${var.query_result_location == null ? "${aws_s3_bucket.this[0].arn}/*" : replace(var.query_result_location, "s3://", "")}*"]
+    resources = ["${var.query_result_location == null ? "${aws_s3_bucket.this[0].arn}/*" : replace(var.query_result_location, "s3://", "arn:aws:s3:::")}*"]
   }
 
   statement {
     actions = ["s3:GetObject"]
     resources = [for partition in var.partitions :
-      "arn:aws:s3:::${replace(partition.location, "s3://", "")}*"
+      "${replace(partition.location, "s3://", "arn:aws:s3:::")}*"
     ]
   }
 
