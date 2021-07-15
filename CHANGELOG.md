@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.2...v1.0.3) (2021-07-15)
+
+
+### Bug Fixes
+
+* **artifact download:** only show errors for curl execution output ([309b575](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/309b5752b90b656eb40fc60ccaeac57013806585))
+
 ## [1.0.2](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.1...v1.0.2) (2021-07-15)
 
 
