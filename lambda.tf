@@ -1,6 +1,6 @@
 resource "null_resource" "this" {
   triggers = {
-    always_run = timestamp()
+    version = var.release
   }
 
   provisioner "local-exec" {
