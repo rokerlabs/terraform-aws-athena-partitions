@@ -115,13 +115,15 @@ module "athena_partitions" {
   source  = "rokerlabs/athena-partitions/aws"
   version = "~> 1.0.0"
 
-  name = "loadbalancing"
-  partitions = [{
-    database            = "production"
-    table               = "alb_logs"
-    location            = "s3://logs-123456789000-us-west-2/AWSLogs/123456789000/elasticloadbalancing/us-west-2/"
-    query_result_bucket = "s3://aws-athena-query-results-123456789000-us-west-2/"
-  }]
+  name = "alb-logs"
+
+  partitions = {
+    my_alb_logs = {
+      database = "production"
+      table    = "alb_logs"
+      location = "s3://logs-123456789000-us-west-2/AWSLogs/123456789000/elasticloadbalancing/us-west-2/"
+    }
+  }
 }
 ```
 
