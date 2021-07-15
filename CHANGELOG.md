@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.0...v1.0.1) (2021-07-15)
+
+
+### Bug Fixes
+
+* **iam:** fixed arn s3:GetObject policy for existing query result locations ([defd361](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/defd3617d4e03f39ec833c9daa506593e65b77ce))
+
 # 1.0.0 (2021-07-15)
 
 
