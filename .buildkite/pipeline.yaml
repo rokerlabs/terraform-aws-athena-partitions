@@ -36,6 +36,7 @@ steps:
           propagate-environment: true
           environment:
             - GITHUB_TOKEN
+            - HUSKY=0
 
   - label: ':mag: TFLint'
     plugins:
