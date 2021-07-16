@@ -21,10 +21,9 @@ data "aws_iam_policy_document" "this" {
   }
 
   statement {
-    actions = ["s3:ListBucket"]
-    resources = [for partition in var.partitions :
-      "arn:aws:s3:::${regex("s3:\\/\\/([a-z0-9-\\.]+)\\/.*", partition.location)}"
-    ]
+    # Ideally resources would be the partition.location arn. 
+    actions   = ["s3:ListBucket"]
+    resources = ["*"]
   }
 
   statement {
