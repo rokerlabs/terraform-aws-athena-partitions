@@ -33,7 +33,7 @@ func (s *server) handler(event partitionEvent) error {
 		QueryExecutionContext: &athena.QueryExecutionContext{
 			Database: &event.Database,
 		},
-		QueryString: queryString(event),
+		QueryString: queryString(event, time.Now()),
 		ResultConfiguration: &athena.ResultConfiguration{
 			OutputLocation: &event.QueryResultLocation,
 		},
@@ -48,9 +48,10 @@ func (s *server) handler(event partitionEvent) error {
 	return nil
 }
 
-func queryString(event partitionEvent) *string {
-	year, month, day := time.Now().Date()
-	query := fmt.Sprintf("ALTER TABLE %s ADD PARTITION (year=\"%d\", month=\"%d\", day=\"%d\") LOCATION \"%s%d/%d/%d/\"", event.Table, year, int(month), day, event.Location, year, int(month), day)
+func queryString(event partitionEvent, t time.Time) *string {
+	partition := t.Format("year=\"2006\", month=\"01\", day=\"02\"")
+	partitionLocation := t.Format("2006/01/02/")
+	query := fmt.Sprintf("ALTER TABLE %s ADD PARTITION (%s) LOCATION \"%s%s\"", event.Table, partition, event.Location, partitionLocation)
 	log.Printf("level=debug %s", query)
 
 	return &query
