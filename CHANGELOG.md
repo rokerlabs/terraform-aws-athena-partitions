@@ -1,10 +1,3 @@
-## [1.0.3](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.2...v1.0.3) (2021-07-16)
-
-
-### Bug Fixes
-
-* **iam:** allow glue to list the target location s3 bucket ([c5789cf](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/c5789cfdfcf0d357f3a79f82cbd8b217462d71c6))
-
 ## [1.0.2](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.1...v1.0.2) (2021-07-16)
 
 
