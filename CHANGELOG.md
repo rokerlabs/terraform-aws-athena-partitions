@@ -3,16 +3,7 @@
 
 ### Bug Fixes
 
-* **iam:** allow glue to list the target location s3 bucket ([da427a2](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/da427a2eb070166dd272c57b1cee0ed9b2ba7bb8))
-* **iam:** allow glue to list the target location s3 bucket ([c5789cf](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/c5789cfdfcf0d357f3a79f82cbd8b217462d71c6))
 * **iam:** allow list bucket on all resources ([5c84d35](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/5c84d353fb9ad7340a4d43e2b26cd3c6ef7663fd))
-
-## [1.0.3](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.2...v1.0.3) (2021-07-16)
-
-
-### Bug Fixes
-
-* **iam:** allow glue to list the target location s3 bucket ([da427a2](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/da427a2eb070166dd272c57b1cee0ed9b2ba7bb8))
 
 ## [1.0.2](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.1...v1.0.2) (2021-07-16)
 
