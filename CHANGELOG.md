@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.1...v1.0.2) (2021-07-16)
+
+
+### Bug Fixes
+
+* **partitions:** prepend '0' to single digit partition sections to use '01' instead of '1' ([6d7fc16](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/6d7fc16aa63c7e27a96c4cc89af604ad34ff79fa))
+
 ## [1.0.1](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.0...v1.0.1) (2021-07-15)
 
 
