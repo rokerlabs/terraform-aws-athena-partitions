@@ -10,7 +10,7 @@ resource "null_resource" "this" {
 
 module "lambda" {
   source  = "terraform-aws-modules/lambda/aws"
-  version = "2.20.0"
+  version = "2.21.0"
 
   function_name = local.name
   handler       = "athena-partitions"
