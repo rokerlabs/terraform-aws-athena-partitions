@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.3...v1.0.4) (2022-09-02)
+
+
+### Bug Fixes
+
+* **deps:** update module go to 1.19 ([#25](https://github.com/rokerlabs/terraform-aws-athena-partitions/issues/25)) ([e5707df](https://github.com/rokerlabs/terraform-aws-athena-partitions/commit/e5707df1a2326a8456191080958dc051d14b007e))
+
 ## [1.0.3](https://github.com/rokerlabs/terraform-aws-athena-partitions/compare/v1.0.2...v1.0.3) (2021-07-16)
 
 
