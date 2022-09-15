@@ -2,21 +2,21 @@ steps:
   - label: ":git: Commitlint"
     command: .buildkite/bin/commitlint
     plugins:
-      - docker#v3.13.0:
+      - docker#v3.14.0:
           image: node:14
           propagate-environment: true
 
   - label: ":golangci-lint: Code quality"
     command: .buildkite/bin/lint
     plugins:
-      - docker#v3.13.0:
+      - docker#v3.14.0:
           image: rokerlabs/golangci-lint:1.16
           propagate-environment: true
 
   - label: ":bomb: Unit test"
     command: .buildkite/bin/test
     plugins: &go
-      - docker#v3.13.0:
+      - docker#v3.14.0:
           image: golang:1.16
           propagate-environment: true
 
@@ -30,7 +30,7 @@ steps:
     command: .buildkite/bin/semantic-release --dry-run
     depends_on: go-build
     plugins: &semantic-release
-      - docker#v3.13.0:
+      - docker#v3.14.0:
           image: rokerlabs/semantic-release:17.4.3
           mount-ssh-agent: true
           propagate-environment: true
@@ -40,26 +40,26 @@ steps:
 
   - label: ':mag: TFLint'
     plugins:
-      - docker#v3.13.0:
+      - docker#v3.14.0:
           image: wata727/tflint
           command: ["--var-file=testing.tfvars", "."]
 
   - label: ':safety_vest: TFSEC'
     plugins:
-      - docker#v3.13.0:
+      - docker#v3.14.0:
           image: tfsec/tfsec
           command: ["--tfvars-file=testing.tfvars", "."]
 
   - label: ':microscope: checkov'
     plugins:
-      - docker#v3.13.0:
+      - docker#v3.14.0:
           image: bridgecrew/checkov
           command: ["-d", "/workdir"]
 
   - label: ':terraform: Validate'
     command: validate
     plugins:
-      - docker#v3.13.0:
+      - docker#v3.14.0:
           image: rokerlabs/terraform:0.15
           environment:
             - AWS_REGION
